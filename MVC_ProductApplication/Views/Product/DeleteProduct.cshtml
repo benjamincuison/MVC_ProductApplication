@@ -1,0 +1,67 @@
+﻿@model List<MVC_ProductApplication.Models.PRODUCT>
+@{
+    ViewBag.Title = "Delete Product";
+    Layout = "~/Views/Shared/_DefaultEmpty.cshtml";
+}
+
+<div style="position: fixed; left: 0px; right: 0px; bottom: 0px; top: 0px; margin: auto; border: 1px solid; Width: 400px; height: 500px">
+    <div style="position: absolute; left: 0px; right: 0px; bottom: 0px; top: 0px; margin: auto;  Width: 350px; height: 450px">
+
+        <h1 style="text-align:center">Delete Product</h1>
+        
+        <form method="post" style="padding: 4px" action="@Url.Action("DeleteProduct","Product")">
+            <div class="mb-3" style="padding: 4px">
+                <label for="Product" class="form-label">Product Name</label>
+                <select name="ProductID" style="padding: 4px" required>
+                    <option disabled selected value></option>
+                    @foreach (var product in Model)
+                    {
+                        <option value="@product.ProductID "> @product.ProductName </option>
+                    }
+
+                </select>
+            </div>
+
+            <div style="padding: 4px">
+                <button type="submit" class="btn btn-primary" style="width:100%"> Submit </button>
+            </div>
+            
+            <div>@ViewBag.Message</div>
+        </form>
+
+        <div style="float: left; padding: 4px">
+            <div style="padding: 4px; float: left">
+                <form action="@Url.Action("CreateProduct","Product")">
+                    <button type="submit"> Create Product </button>
+                </form>
+            </div>
+
+            <div style="padding: 4px; float: left">
+                <form action="@Url.Action("EditProduct","Product")">
+                    <button type="submit"> Edit Product </button>
+                </form>
+            </div>
+
+            <div style="padding: 4px; float: left">
+                <form action="@Url.Action("DeleteProduct", "Product")">
+                    <button type="submit"> Delete Product </button>
+                </form>
+            </div>
+
+            <div style="padding: 4px; float:left">
+                <form action="@Url.Action("CreateCustomer","Customer")">
+                    <button type="submit"> Create Customer </button>
+                </form>
+            </div>
+            <div style="padding: 4px; float: left">
+                <form action="@Url.Action("ProductList", "Product")">
+                    <button type="submit"> Product List </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
